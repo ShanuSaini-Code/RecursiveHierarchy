@@ -1,3 +1,4 @@
+import "./App.css";
 import { inputData } from "./utils/data";
 import TreeView from "./TreeView";
 

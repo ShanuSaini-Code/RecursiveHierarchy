@@ -13,14 +13,17 @@ const ListData = ({ field }) => {
 
   return (
     <li>
-      <div onClick={() => handleOnClick()} style={customStyle}>
-        {field?.name}
-      </div>
-        {expanded && field?.child && field.child?.length > 0 &&
-          <ul>
-            {field.child.map(data => <ListData key={`${data.name} name`} field={data} />)}
-          </ul>
+      <div onClick={() => handleOnClick()} className="listItem" style={customStyle}>
+        {field?.child?.length > 0 &&
+          <span className={expanded ? 'arrow arrow-down' : 'arrow arrow-right'}><strong>{">"}</strong></span>
         }
+        <span className="name">{field?.name}</span>
+      </div>
+      {expanded && field?.child && field.child?.length > 0 &&
+        <ul>
+          {field.child.map(data => <ListData key={`${data.name} name`} field={data} />)}
+        </ul>
+      }
     </li>
   )
 }
